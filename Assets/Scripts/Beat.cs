@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Beat : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Beat : MonoBehaviour
     public GameObject[] notePrefab;
     public GameObject Indicator;
     public GameObject Trigger;
+    private bool sceneLoaded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +25,14 @@ public class Beat : MonoBehaviour
         {
             if (hasStarted)
             {
-                n.transform.position = Vector3.MoveTowards(n.transform.position, Trigger.transform.position, beatTempo * Time.deltaTime);
+                n.transform.position += new Vector3(beatTempo * Time.deltaTime, 0, 0);
             }
+        }
+
+        if (!sceneLoaded && allObjectAreDestroyed())
+        {
+            sceneLoaded = true;
+            SceneManager.LoadScene("MainScene");
         }
     }
     

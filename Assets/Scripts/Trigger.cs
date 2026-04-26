@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Trigger : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class Trigger : MonoBehaviour
         {
             if (button != null)
             {
-                button.gameObject.SetActive(true);
-
+                //button.gameObject.SetActive(true);
+                SceneManager.LoadScene("Rhythm1");
             }
         }
     }
