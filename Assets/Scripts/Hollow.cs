@@ -5,27 +5,26 @@ using UnityEngine;
 public class Hollow : MonoBehaviour
 {
     public GameObject[] NotePrefabs;
-    public bool isPassed;
+    public bool isPassed = false;
     // Start is called before the first frame update
     void Start()
     {
-        isPassed = false;
+
     }
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        isPassed = true;
-    }
-    
     void Update()
     {
-        foreach(GameObject n in NotePrefabs)
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if the colliding object is a note (compare by tag or name instead of reference)
+        if(other.CompareTag("Note") || other.gameObject.name.Contains("Note"))
         {
-            if(isPassed)
-            {
-                n.SetActive(false);
-            }
+            isPassed = true;
+            other.gameObject.SetActive(false); // Only deactivate the note that entered
         }
     }
 }

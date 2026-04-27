@@ -19,7 +19,6 @@ public class Rhythm : MonoBehaviour
     {
         if(Input.GetKeyDown(keyToPress))
         {
-            Debug.Log("Key Pressed");
             hitSprite.SetActive(true);
         }
         if(Input.GetKeyUp(keyToPress))
